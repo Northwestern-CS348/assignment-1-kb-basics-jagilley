@@ -24,6 +24,7 @@ class KnowledgeBase(object):
             fact (Fact or Rule): Fact or Rule we're asserting in the format produced by read.py
         """
         print("Asserting {!r}".format(fact))
+        self.facts.append(fact)
         
     def kb_ask(self, fact):
         """Ask if a fact is in the KB
@@ -35,3 +36,15 @@ class KnowledgeBase(object):
             ListOfBindings|False - ListOfBindings if result found, False otherwise
         """
         print("Asking {!r}".format(fact))
+        for storedFact in self.facts:
+            if storedFact == fact:
+                print("fact found!")
+                return storedFact
+        return False
+
+kb = KnowledgeBase()
+factList = read.read_tokenize("/Users/jaspergilley/Documents/NU Classes/EECS 348/assignment-1-kb-basics-jagilley/statements_kb2.txt")
+for i in factList:
+    kb.kb_assert(i)
+
+print(kb.kb_ask(kb.facts[3]))
