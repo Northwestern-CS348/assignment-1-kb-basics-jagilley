@@ -42,9 +42,10 @@ class KnowledgeBase(object):
                 return storedFact
         return False
 
-kb = KnowledgeBase()
-factList = read.read_tokenize("/Users/jaspergilley/Documents/NU Classes/EECS 348/assignment-1-kb-basics-jagilley/statements_kb2.txt")
-for i in factList:
-    kb.kb_assert(i)
+if __name__=="__main__":
+    kb = KnowledgeBase()
+    factList = read.read_tokenize("/Users/jaspergilley/Documents/NU Classes/EECS 348/assignment-1-kb-basics-jagilley/statements_kb2.txt")
+    for i in factList:
+        kb.kb_assert(i)
 
-print(kb.kb_ask(kb.facts[3]))
+    print(kb.kb_ask(kb.facts[3]))
